@@ -20,15 +20,16 @@ ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
         return l1;
 
     // 选择较小的节点作为当前节点，递归合并剩余部分
-    if (l1->val <= l2->val)
+    // 不用写while
+    if (l1->val <= l2->val) ////
     {
         l1->next = mergeTwoLists(l1->next, l2); // 合并l1的下一个节点和l2
-        return l1;                              // 返回当前选中的l1节点
+        return l1;                              ///                              // 返回当前选中的l1节点
     }
     else
     {
         l2->next = mergeTwoLists(l1, l2->next); // 合并l1和l2的下一个节点
-        return l2;                              // 返回当前选中的l2节点
+        return l2;                              ////                       // 返回当前选中的l2节点
     }
 }
 

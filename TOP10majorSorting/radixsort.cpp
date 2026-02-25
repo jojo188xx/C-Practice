@@ -11,23 +11,23 @@ std::vector<int> radixsort(std::vector<int> nums)
     {
         return {};
     }
-    int maxVal = *std::max_element(nums.begin(), nums.end());/////
+    int maxVal = *std::max_element(nums.begin(), nums.end()); ///////
     int digit = 1;
-    while (maxVal / digit > 0)
+    while (maxVal / digit > 0)////
     {
-        std::vector<std::vector<int>> buckets(10);
+        std::vector<std::vector<int>> buckets(10); // 循环内创建自动销毁，循环外创建要不停清空buk
 
         // 将元素分配到对应桶中
         for (int num : nums)
         {
             // 计算当前位的数字（个位/十位/百位...）
-            int cur = (num / digit) % 10;
+            int cur = (num / digit) % 10; //////////
             buckets[cur].push_back(num);
         }
-        nums.clear(); 
+        nums.clear();
         for (auto &buk : buckets)
         {
-            nums.insert(nums.end(), buk.begin(), buk.end());/////
+            nums.insert(nums.end(), buk.begin(), buk.end()); /////
         }
 
         // 处理下一位（十位→百位→...）

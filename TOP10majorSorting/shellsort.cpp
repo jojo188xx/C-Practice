@@ -4,7 +4,7 @@ using namespace std;
 void shellsort(vector<int> &nums)
 {
     int n = nums.size();
-    int gap = n / 2;
+    int gap = n / 2; // 步长
     while (gap > 0)
     {
         for (int i = gap; i < n; i++)

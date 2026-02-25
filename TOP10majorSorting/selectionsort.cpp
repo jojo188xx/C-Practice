@@ -11,7 +11,7 @@ void selectionsort(vector<int> &nums)
         {
             if (nums[j] < nums[min_id])
             {
-                min_id = j;
+                min_id = j;///
             }
         }
         swap(nums[i], nums[min_id]);

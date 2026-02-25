@@ -1,45 +1,49 @@
-#include <iostream>
-#include <unordered_map>
 #include <string>
 #include <stack>
+#include <unordered_map>
+#include <iostream>
 using namespace std;
-class solution
+
+class Solution
 {
 public:
-    bool isvalid(string &s) 
+    bool isvalid(string s)
     {
-        unordered_map<char, char> brackmap = {
-            {'}', '{'},
-            {']', '['},
-            {')', '('}};
         stack<char> st;
-        char top;
+        // 哈希表：右括号为键，对应的左括号为值，方便快速匹配
+        unordered_map<char, char> map = {{']', '['}, {')', '('}, {'}', '{'}};
         for (char ch : s)
         {
-            if (brackmap.count(ch))//检查是否是存在的索引
+            // 情况1：是左括号，直接入栈
+            if (ch == '(' || ch == '[' || ch == '{')
             {
-                top = st.empty() ? '0' : st.top();///////
-                if (!st.empty())
+                st.push(ch);
+            }
+            else
+            {
+                // 情况2：是右括号，【先判断栈是否为空】，空则无匹配的左括号
+                if (st.empty())
                 {
-                    st.pop();
+                    return false;
                 }
-                if (top != brackmap[ch])//////top和ch的位置错，对索引理解不透测
+                // 栈非空，取出栈顶元素并出栈
+                char top = st.top();
+                st.pop();
+                // 匹配失败，直接返回false
+                if (top != map[ch])
                 {
                     return false;
                 }
             }
-            else
-            {
-                st.push(ch);
-            }
         }
-        return st.empty();///
+        // 遍历结束后，栈为空则全部匹配成功，否则有未闭合的左括号
+        return st.empty();
     }
 };
 int main()
 {
     string s = "(){}[]";
-    solution p1;
+    Solution p1;
 
     bool ans = p1.isvalid(s);
     cout << ans << endl;

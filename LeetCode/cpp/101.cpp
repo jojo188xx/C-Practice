@@ -14,9 +14,9 @@ struct TreeNode
 };
 bool check(TreeNode *left, TreeNode *right)
 {
-    if (left == nullptr && right == nullptr)
+    if (!left && !right) //!!判断是空！！
         return true;
-    if (left == nullptr || right == nullptr)
+    if (!left || !right)
         return false;
     return left->val == right->val && check(left->left, right->right) && check(left->right, right->left);
 }

@@ -8,7 +8,7 @@ int countingstring(string s)
     auto expand = [&](int left, int right) -> int
     {
         int cnt = 0;
-        while (left >= 0 && right < n && s[left] == s[right])
+        while (left >= 0 && right < n && s[left] == s[right]) /// 整体加减，中心扩散两边
         {
             cnt++;
             left--;
