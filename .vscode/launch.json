@@ -89,8 +89,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "e:/DESK/PRACTISE/ez/LeetCode/cpp",
-      "program": "e:/DESK/PRACTISE/ez/LeetCode/cpp/build/Debug/outDebug",
+      "cwd": "e:/DESK/PRACTISE/ez/practice",
+      "program": "e:/DESK/PRACTISE/ez/practice/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

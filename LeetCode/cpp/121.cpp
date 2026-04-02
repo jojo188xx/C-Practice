@@ -10,7 +10,7 @@ int socket(vector<int> &price)
     int maxprofit = 0;
     int minprice = price[0]; // 不是0
     for (int curprice : price)
-    {
+    { // 更新到今天为止的最低买入价格
         minprice = min(curprice, minprice);
         maxprofit = max(maxprofit, curprice - minprice);
     }

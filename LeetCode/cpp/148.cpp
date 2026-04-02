@@ -23,7 +23,7 @@ public:
         }
 
         // 步骤1：用快慢指针找到链表中点（拆分链表）
-        ListNode *mid = findMiddle(head);
+        ListNode *mid = findmiddle(head);
         ListNode *rightHead = mid->next;
         mid->next = nullptr; // 切断链表，分成左、右两部分
 
@@ -38,15 +38,16 @@ public:
 
 private:
     // 快慢指针找中点（快指针走两步，慢指针走一步，快指针到尾时慢指针在中点）
-    ListNode *findMiddle(ListNode *head)
+    ListNode *findmiddle(ListNode *head)
     {
-        if (head == nullptr || head->next == nullptr)
-        {
+        if (!head || !head->next)
             return head;
-        }
+
         ListNode *slow = head;
-        ListNode *fast = head->next; // 快指针从第二个节点开始，避免偶数节点时死循环
-        while (fast != nullptr && fast->next != nullptr)
+        ListNode *fast = head;
+
+        // 这里必须是 -> 不是 -
+        while (fast->next && fast->next->next)
         {
             slow = slow->next;
             fast = fast->next->next;

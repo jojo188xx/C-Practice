@@ -13,17 +13,17 @@ int leastInterval(vector<char> &tasks, int n)
         countMap[task]++;
         maxcnt = max(maxcnt, countMap[task]);
     }
-    int maxcntnum = 0;
+    int maxkinds = 0;
     for (auto &pair : countMap)
     {
         if (pair.second == maxcnt)
         {
-            maxcntnum++;
+            maxkinds++;
         }
     }
     // 每一轮的「时间框架」（n 是冷却，+1 是任务本身的时间）。
     // 在第一步的框架最后，补上「所有最多任务的最后一次执行」
-    int coretime = (maxcnt - 1) * (n + 1) + maxcntnum;
+    int coretime = (maxcnt - 1) * (n + 1) + maxkinds;
     //(2-1)*(2+1)+1 = 4，但任务总数是 6（A,A,B,C,D,E）。
     return max(coretime, (int)tasks.size());
 }
